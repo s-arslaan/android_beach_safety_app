@@ -1,6 +1,7 @@
 package com.example.soswatch;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +37,9 @@ public class MainActivity2 extends Activity {
         binding = ActivityMain2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Intent intent = getIntent();
+        String token_id = intent.getStringExtra("token");
+
 //        mTextView = binding.text;
 
         sendAlrtBtn = binding.sendAlert;
@@ -48,9 +52,9 @@ public class MainActivity2 extends Activity {
                 RequestQueue requestQueue = Volley.newRequestQueue(MainActivity2.this);
 
                 Map<String, String> params = new HashMap();
-                params.put("token","12345");
-                params.put("latitude","15.1254");
-                params.put("longitude","45.1254");
+                params.put("token",token_id);
+                params.put("latitude","7777777");
+                params.put("longitude","999999");
 
                 JSONObject parameters = new JSONObject(params);
 
@@ -76,5 +80,10 @@ public class MainActivity2 extends Activity {
                 stringRequest.setShouldCache(false);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
     }
 }
